@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=2 format=2]
+
+[ext_resource path="res://asset library/world environment/ProceduralSky/ProceduralSky_SkyBlue_0.0.1.tres" type="ProceduralSky" id=1]
+
+[resource]
+background_mode = 2
+background_sky = ExtResource( 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.11
+ambient_light_sky_contribution = 0.0
+fog_color = Color( 0.25098, 0.423529, 0.74902, 1 )
+fog_sun_color = Color( 0.0801221, 0.274769, 0.664062, 1 )
+tonemap_mode = 2

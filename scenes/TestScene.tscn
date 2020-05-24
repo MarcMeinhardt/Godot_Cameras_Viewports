@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://asset library/world environment/SkyBlue_0.0.1.tres" type="Environment" id=1]
+[ext_resource path="res://asset library/materials/textures/GridBox1024.jpg" type="Texture" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1000, 2, 1000 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.729412, 0.729412, 0.729412, 1 )
+albedo_texture = ExtResource( 2 )
+metallic_specular = 0.34
+uv1_scale = Vector3( 380, 250, 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 500, 1, 500 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 10, 10, 2 )
+
+[node name="TestScene" type="Spatial"]
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278282, -0.0200195, -0.00561523 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 3 )
+
+[node name="Box" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0517, 3.18018, 25.9804 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Box"]
+shape = SubResource( 6 )
+
+[node name="Box2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.4543, 3.18018, -35.9671 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box2"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Box2"]
+shape = SubResource( 6 )
+
+[node name="Wall" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.47911, 6.70646, -1.33402 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, -1.29296, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall"]
+shape = SubResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.624848, 0.780747, 0, -0.780747, -0.624848, 0, 51.2898, 0 )
+shadow_enabled = true
+shadow_color = Color( 0.345098, 0.345098, 0.345098, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
